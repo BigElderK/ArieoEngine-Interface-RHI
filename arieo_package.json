@@ -1,5 +1,5 @@
 {
-    "name": "arieo.engine.interface.rhi",
+    "name": "ArieoEngine-Interface-RHI",
     "description": "RHI interface for engine",
     "build_commands":
     [
