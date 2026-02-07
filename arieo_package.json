@@ -1,0 +1,25 @@
+{
+    "name": "arieo.engine.interface.rhi",
+    "description": "RHI interface for engine",
+    "build_commands":
+    [
+        "cmake -P $ENV{ARIEO_PACKAGE_BUILDENV_INSTALL_FOLDER}/cmake/package/build_engine_project_package.cmake"
+    ],
+    "install_commands": 
+    [
+        "cmake -P $ENV{ARIEO_PACKAGE_BUILDENV_INSTALL_FOLDER}/cmake/package/install_engine_project_package.cmake"
+    ],
+    "dependencies": 
+    {
+        "packages": [
+            {
+                "git_url": "https://github.com/BigElderK/ArieoEngine-BuildEnv.git",
+                "tag": "main"
+            },
+            {
+                "git_url": "https://github.com/BigElderK/ArieoEngine-Core.git",
+                "tag": "main"
+            }
+        ]
+    }
+}
