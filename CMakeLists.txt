@@ -5,14 +5,15 @@ project(ArieoEngine)
 
 arieo_engine_project(
     arieo_rhi_interface
-    ALIAS arieo::interface::rhi
     ROOT_NAMESPACE Arieo::Interface::RHI
     SCRIPT_PACKAGE_NAME arieo:rhi
     PROJECT_TYPE interface
     PUBLIC_INCLUDE_FOLDERS
         ${CMAKE_CURRENT_SOURCE_DIR}/public/include
+    PACKAGES
+        ArieoEngine-Core
     INTERFACES
-        arieo::interface::window
+        ArieoEngine-Core::arieo_core
     AST_GENERATE_FOLDER
         ${CMAKE_CURRENT_SOURCE_DIR}/_generated/ast
     NATIVE_CODE_GENERATE_FOLDER
