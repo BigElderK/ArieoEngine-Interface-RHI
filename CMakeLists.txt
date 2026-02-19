@@ -7,30 +7,32 @@ arieo_engine_project(
     arieo_rhi_interface
     PROJECT_TYPE interface
 
-    PACKAGES
-        Arieo-Core
-        Arieo-Interface-Window
-    INTERFACES
-        Arieo-Interface-Window::arieo_window_interface
-    PRIVATE_LIBS
-        Arieo-Core::arieo_core
-    
-    PUBLIC_INCLUDE_FOLDERS
-        ${CMAKE_CURRENT_SOURCE_DIR}/public/include
+    DEPENDENCIES
+        PACKAGES
+            Arieo-Core
+            Arieo-Interface-Window
+        INTERFACES
+            Arieo-Interface-Window::arieo_window_interface
+            Arieo-Core::arieo_core
 
-    ROOT_NAMESPACE Arieo::Interface::RHI
-    SCRIPT_PACKAGE_NAME arieo:rhi
+    SOURCES
+        INTERFACE_INCLUDE_FOLDERS
+            ${CMAKE_CURRENT_SOURCE_DIR}/public/include
 
-    AST_GENERATE_FOLDER
-        ${CMAKE_CURRENT_SOURCE_DIR}/_generated/ast
-    NATIVE_CODE_GENERATE_FOLDER
-        ${CMAKE_CURRENT_SOURCE_DIR}/_generated/native
-    WASM_WIT_GENERATE_FOLDER
-        ${CMAKE_CURRENT_SOURCE_DIR}/_generated/wasm/wit
-    WASM_CXX_SCRIPT_GENERATE_FOLDER
-        ${CMAKE_CURRENT_SOURCE_DIR}/_generated/wasm/cxx
-    WASM_CSHARP_SCRIPT_GENERATE_FOLDER
-        ${CMAKE_CURRENT_SOURCE_DIR}/_generated/wasm/csharp
-    WASM_RUST_SCRIPT_GENERATE_FOLDER
-        ${CMAKE_CURRENT_SOURCE_DIR}/_generated/wasm/rust
+    INTERFACE_CODE_GENERATION
+        ROOT_NAMESPACE Arieo::Interface::RHI
+        SCRIPT_PACKAGE_NAME arieo:rhi
+
+        AST_GENERATE_FOLDER
+            ${CMAKE_CURRENT_SOURCE_DIR}/_generated/ast
+        NATIVE_CODE_GENERATE_FOLDER
+            ${CMAKE_CURRENT_SOURCE_DIR}/_generated/native
+        WASM_WIT_GENERATE_FOLDER
+            ${CMAKE_CURRENT_SOURCE_DIR}/_generated/wasm/wit
+        WASM_CXX_SCRIPT_GENERATE_FOLDER
+            ${CMAKE_CURRENT_SOURCE_DIR}/_generated/wasm/cxx
+        WASM_CSHARP_SCRIPT_GENERATE_FOLDER
+            ${CMAKE_CURRENT_SOURCE_DIR}/_generated/wasm/csharp
+        WASM_RUST_SCRIPT_GENERATE_FOLDER
+            ${CMAKE_CURRENT_SOURCE_DIR}/_generated/wasm/rust
 )
