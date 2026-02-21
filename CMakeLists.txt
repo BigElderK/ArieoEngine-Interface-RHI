@@ -5,6 +5,9 @@ include($ENV{ARIEO_BUILD_ENV_PACKAGES_OUTPUT_DIR}/cmake/build_environment.cmake)
 ARIEO_PACKAGE(
     Arieo-Interface-RHI
     CATEGORY 02_engine
+    DEPENDS
+        https://github.com/BigElderK/Arieo-Core.git@main
+        https://github.com/BigElderK/Arieo-Interface-Window.git@main
 )
 
 ARIEO_ENGINE_PROJECT(
