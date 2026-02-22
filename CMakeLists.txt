@@ -19,7 +19,7 @@ ARIEO_ENGINE_PROJECT(
         ARIEO_PACKAGES
             Arieo-Core
             Arieo-Interface-Window
-        INTERFACES
+        INTERFACE_LIBS
             Arieo-Interface-Window::arieo_window_interface
             Arieo-Core::arieo_core
 
