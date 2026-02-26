@@ -132,7 +132,7 @@ namespace Arieo::Interface::RHI
     };
     ARIEO_ENABLE_BITMASK_OPERATORS(FormatFeatureFlags)
 
-    enum class Format : uint32_t
+    enum class Format : uint64_t
     {
         UNKNOWN = 0,
         R4G4_UNORM_PACK8 = 1,
