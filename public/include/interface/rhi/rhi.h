@@ -27,7 +27,7 @@ namespace Arieo::Interface::RHI
     {
     public:
         virtual std::vector<std::string>& getHardwareInfomations() = 0;
-        virtual Base::Interface<IRenderSurface> createSurface(Base::Interface<Interface::Window::IWindow> window) = 0;
+        virtual Base::Interface<IRenderSurface> createSurface(Base::Interface<Interface::Window::IWindowManager> window_manager, Base::Interface<Interface::Window::IWindow> window) = 0;
         virtual void destroySurface(Base::Interface<IRenderSurface> surface) = 0;
 
         virtual Base::Interface<IRenderDevice> createDevice(size_t hardware_index, Base::Interface<IRenderSurface> surface) = 0;
