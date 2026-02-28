@@ -321,3 +321,7 @@ namespace Arieo::Interface::RHI
         ASTC_12x12_SRGB_BLOCK = 184,
     };
 }
+
+
+
+
