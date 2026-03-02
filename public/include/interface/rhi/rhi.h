@@ -26,7 +26,7 @@ namespace Arieo::Interface::RHI
     class IRenderInstance
     {
     public:
-        virtual std::vector<std::string>& getHardwareInfomations() = 0;
+        virtual Base::Interop::SharedRef<Base::IDataList<const char*>> getHardwareInfomations() = 0;
         virtual Base::Interop::RawRef<IRenderSurface> createSurface(Base::Interop::RawRef<Interface::Window::IWindowManager> window_manager, Base::Interop::RawRef<Interface::Window::IWindow> window) = 0;
         virtual void destroySurface(Base::Interop::RawRef<IRenderSurface> surface) = 0;
 
@@ -65,7 +65,8 @@ namespace Arieo::Interface::RHI
     {
     public:
         virtual Base::Math::Rect<size_t>& getExtent() = 0;
-        virtual std::vector<Base::Interop::RawRef<IImageView>>& getImageViews() = 0;
+        virtual size_t getImageCount() = 0;
+        virtual Base::Interop::RawRef<IImageView> getImageView(size_t index) = 0;
         virtual std::uint32_t acquireNextImageIndex(Base::Interop::RawRef<ISemaphore>) = 0;
         virtual bool isLost() = 0;
     };
@@ -156,7 +157,8 @@ namespace Arieo::Interface::RHI
     class IRenderDevice
     {
     public:
-        virtual Format findSupportedFormat(const std::vector<Format>& candidate_formats, ImageTiling, FormatFeatureFlags) = 0;
+        virtual Format findSupportedFormat(const Base::Interop::DataArrayView<Format>& candidate_formats, ImageTiling, FormatFeatureFlags) = 0;
+        // virtual Format findSupportedFormat(Base::Interop::RawRef<IData>, ImageTiling, FormatFeatureFlags) = 0;
 
         virtual Base::Interop::RawRef<IRenderCommandQueue> getGraphicsCommandQueue() = 0;
         virtual Base::Interop::RawRef<IPresentCommandQueue> getPresentCommandQueue() = 0;
@@ -167,10 +169,10 @@ namespace Arieo::Interface::RHI
         virtual Base::Interop::RawRef<IImage> createImage(std::uint32_t width, std::uint32_t height, Format format, ImageAspectFlags aspect, ImageTiling tiling, ImageUsageFlags usage, MemoryUsage memory_usage) = 0;
         virtual void destroyImage(Base::Interop::RawRef<IImage>) = 0;
 
-        virtual Base::Interop::RawRef<IFramebuffer> createFramebuffer(Base::Interop::RawRef<IPipeline>, Base::Interop::RawRef<ISwapchain>, std::vector<Base::Interop::RawRef<IImageView>>& attachment_array) = 0;
+        virtual Base::Interop::RawRef<IFramebuffer> createFramebuffer(Base::Interop::RawRef<IPipeline>, Base::Interop::RawRef<ISwapchain>, const Base::Interop::DataArrayView<Base::Interop::RawRef<IImageView>>& attachment_array) = 0;
         virtual void destroyFramebuffer(Base::Interop::RawRef<IFramebuffer>) = 0;
 
-        virtual Base::Interop::RawRef<IShader> createShader(void* buf, size_t buf_size) = 0;
+        virtual Base::Interop::RawRef<IShader> createShader(const void* buf, size_t buf_size) = 0;
         virtual void destroyShader(Base::Interop::RawRef<IShader>) = 0; 
 
         //TODO: remove target_image_view from here
